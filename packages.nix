@@ -22,5 +22,9 @@
     nodejs_23
     minikube
     k9s
+    tldr
+    wget
+    htop
+    jq
   ];
 }
