@@ -38,6 +38,10 @@
           cmake
           openssl
           pkg-config
+          go
+          nodejs_23
+          minikube
+          k9s
         ];
 
       environment.shellAliases = {
