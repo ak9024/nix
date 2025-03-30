@@ -33,6 +33,11 @@
           zsh-syntax-highlighting
           zsh-completions
           zsh-history-substring-search
+          cargo
+          rustc
+          cmake
+          openssl
+          pkg-config
         ];
 
       environment.shellAliases = {
