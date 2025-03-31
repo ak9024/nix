@@ -12,9 +12,12 @@
 
     # Integration for managing Homebrew packages through Nix
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    # Integration for home-manager
+    home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#m2
@@ -22,6 +25,17 @@
       modules = [
         # Main system configuration
         ./configuration.nix
+        # Add home-manager module
+        home-manager.darwinModules.home-manager
+        {
+          # https://github.com/nix-community/home-manager/issues/6036
+          users.users.ak9024.home = "/Users/ak9024";
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.ak9024 = ./home.nix;
+          };
+        }
         # Include the nix-homebrew module to manage Homebrew packages
         nix-homebrew.darwinModules.nix-homebrew
         # Configure nix-homebrew settings

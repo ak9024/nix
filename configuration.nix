@@ -3,10 +3,9 @@
 {
   # Import other configuration files
   imports = [
-    ./packages.nix    # System packages
     ./homebrew.nix    # Homebrew configuration
-    ./zsh.nix         # ZSH shell configuration
     ./fonts.nix       # Font configuration
+    ./zsh.nix         # Zsh shell configuration
   ];
 
   # System-wide shell aliases
