@@ -6,6 +6,7 @@
     ./homebrew.nix    # Homebrew configuration
     ./fonts.nix       # Font configuration
     ./zsh.nix         # Zsh shell configuration
+    ./packages.nix
   ];
 
   # System-wide shell aliases
