@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+
+{
   homebrew = {
     enable = true;                 # Enable Homebrew package manager integration
     onActivation = {

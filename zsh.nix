@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+
+{
   # Enable alternative shell support in nix-darwin
   programs.zsh = {
     enable = true;                  # Enable ZSH as a supported shell
@@ -9,12 +11,6 @@
     enableFzfGit = true;            # Enable fuzzy search for git commands and branches
     enableCompletion = true;        # Enable ZSH's built-in completion system
     
-    variables = {
-      # API key for Anthropic's Claude AI service
-      # Used for authentication when making requests to Anthropic's API
-      ANTHROPIC_API_KEY = "";
-    };
-
     promptInit = ''
     # Check if Oh My Zsh is installed, if not, use default settings
     if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -23,10 +19,6 @@
       plugins=(git docker docker-compose)  # Enable plugins with proper syntax
       source $ZSH/oh-my-zsh.sh  # Load Oh My Zsh with the configured settings
     fi
-
-    # Export the ANTHROPIC_API_KEY environment variable
-    # This line takes the value from the system environment and makes it available in the shell
-    export ANTHROPIC_API_KEY="${builtins.getEnv "ANTHROPIC_API_KEY"}";
 
     # Shell Prompt Configuration - Use starship as primary, fallback to pure
     if command -v starship &> /dev/null; then

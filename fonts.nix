@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+
+{
   # Configure system fonts
   fonts.packages = with pkgs; [
     # JetBrains Mono - a monospace font with programming ligatures

@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+
+{
   # Import other configuration files
   imports = [
     ./packages.nix    # System packages
