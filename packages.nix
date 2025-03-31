@@ -39,5 +39,6 @@
     wget
     htop
     jq
+    neofetch
   ];
 }
