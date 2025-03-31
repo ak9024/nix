@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -73,4 +73,22 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  
+  # Shared modules configuration
+  imports = [
+    # Add your shared modules here
+    inputs.sops-nix.homeManagerModules.sops
+    {
+      sops = {
+        age = {
+          keyFile = "~/.config/sops/age/keys.txt";
+          generateKey = true;
+        };
+        defaultSopsFile = "${inputs.self}/secrets/secret.yaml";
+        secrets.hello = {
+          path = "%r/hello";
+        };
+      };
+    }
+  ];
 }

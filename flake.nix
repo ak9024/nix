@@ -15,9 +15,12 @@
 
     # Integration for home-manager
     home-manager.url = "github:nix-community/home-manager";
+
+    # Integration with sops-nix to store secrets configuration
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager, sops-nix }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#m2
@@ -33,6 +36,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = { inherit inputs; };
             users.ak9024 = ./home.nix;
           };
         }

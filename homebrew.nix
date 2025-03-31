@@ -15,6 +15,7 @@
       "gnupg"                      # GNU Privacy Guard - encryption and signing tool
       "pinentry-mac"               # macOS-specific PIN entry program for GPG
       "eza"
+      "age"
     ];
   };
 }
