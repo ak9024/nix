@@ -32,29 +32,46 @@ age-keygen -o ~/.config/sops/age/keys.txt
 ```
 
 ```shell
+# for still using lazyvim, but next need to porting this config to nix.
 # https://www.lazyvim.org/installation
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 ```
 
 ```shell
-touch .gitconfig
+# next need to add home-manager to set this config in nix
+touch ~/.gitconfig
+```
 
+```shell
+# User identity configuration
 [user]
-signingkey = <signingkey>
+signingkey = <signingkey>  # Your GPG key for signing commits
 email = adiatma.mail@gmail.com
 name = adiatma kamarudin
+
+# Commit signing configuration
 [commit]
-gpgsign = true
+gpgsign = true  # Enable GPG signing for all commits
+
+# Core Git settings
 [core]
-pager = delta
+pager = delta  # Use delta for improved diffs
+
+# Interactive mode settings
 [interactive]
-difffilter = delta --color-only
+difffilter = delta --color-only  # Use delta for interactive diffs
+
+# Delta tool configuration
 [delta]
-navigate = true
+navigate = true  # Enable navigation in delta
+
+# Merge conflict resolution settings
 [merge]
-conflictstyle = zdiff3
+conflictstyle = zdiff3  # Use zdiff3 style for merge conflicts
+
+# GPG configuration
 [gpg]
-program = /opt/homebrew/bin/gpg
+program = /opt/homebrew/bin/gpg  # Path to GPG executable
 ```
 
 ### 3. Update Configuration
