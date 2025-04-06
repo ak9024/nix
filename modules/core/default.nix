@@ -28,5 +28,28 @@
   programs.tmux = {
     enable = true;  # Enable the tmux terminal multiplexer
   };
+
+  environment.etc = {
+    "gitconfig" = {
+      text = ''
+        [user]
+          signingkey = 4fc14a6093259fba
+          email = adiatma.mail@gmail.com
+          name = adiatma kamarudin
+        [commit]
+          gpgsign = true
+        [core]
+          pager = delta
+        [interactive]
+          difffilter = delta --color-only
+        [delta]
+          navigate = true
+        [merge]
+          conflictstyle = zdiff3
+        [gpg]
+          program = /opt/homebrew/bin/gpg
+      '';
+    };
+  };
 }
 
