@@ -1,47 +1,51 @@
 { pkgs, ... }: 
 
 {
-  # List packages installed in system profile
+  # System packages configuration
   environment.systemPackages = with pkgs; [
-    # Shell and terminal utilities
+    # Text editors and shell enhancements
+    neovim
     oh-my-zsh
-    neovim 
-   
-    # Version control
-    git
-    delta
     
-    # ZSH enhancements
+    # ZSH plugins and extensions
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
     zsh-history-substring-search
     
-    # Container tools
-    colima
+    # Version control tools
+    git
+    delta  # Enhanced git diff viewer
+    
+    # Container and orchestration tools
+    colima      # Container runtime for macOS
     docker_26
-    minikube
-    k9s
     podman
     podman-compose
+    minikube    # Local Kubernetes
+    k9s         # Kubernetes CLI UI
     
-    # Programming languages and build tools
+    # Programming languages and development tools
     rustc
     cargo
     go
     nodejs_23
-    go-migrate
-
-    # System utilities
-    tldr
-    wget
-    htop
-    jq
-    neofetch
-    tree
-    openssl
+    go-migrate  # Database migration tool
     cmake
     pkg-config
-    sops
+    
+    # CLI utilities
+    wget
+    curl
+    htop        # Interactive process viewer
+    jq          # JSON processor
+    tldr        # Simplified man pages
+    tree        # Directory structure viewer
+    neofetch    # System information tool
+    
+    # Security and encryption tools
+    openssl     # Cryptographic library and tools
+    sops        # Secrets management
   ];
 }
+

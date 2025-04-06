@@ -2,54 +2,59 @@
 
 {
   imports = [
-    # Core packages and applications
+    # Core system packages and applications
     ./packages.nix
-    # ZSH shell configuration
+    # ZSH shell configuration and customization
     ./zsh.nix
-    # System fonts configuration
+    # System-wide font configuration and management
     ./fonts.nix
-    # Homebrew integration for macOS
+    # macOS Homebrew integration and package management
     ../homebrew
   ];
 
-  # Nix configuration
+  # Nix package manager configuration
   nix = {
-    # Necessary for using flakes on this system
+    # Enable flakes and nix-command for modern Nix workflows
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
+  # System state version - controls compatibility behaviors
+  # Only change after reviewing: $ darwin-rebuild changelog
   system.stateVersion = 6;
 
-  # The platform the configuration will be used on.
+  # Target platform specification for package compilation
   nixpkgs.hostPlatform = "aarch64-darwin";
   
-  # System settings
+  # macOS system settings and defaults
   system = {
-    # Configure host name
+    # Global macOS preferences and UI settings
     defaults = {
       NSGlobalDomain = {
+        # Show all file extensions in Finder
         AppleShowAllExtensions = true;
+        # Enable full keyboard access for all controls
         AppleKeyboardUIMode = 3;
       };
     };
     
-    # Activation scripts
+    # System initialization scripts that run before activation
     activationScripts.preActivation.text = ''
-      # Create directories for secrets and SSH keys
+      # Create and secure directory for sensitive files
       mkdir -p /run/secrets
       chmod 755 /run/secrets
       
-      # Ensure SSH directory exists with correct permissions
+      # Set up SSH configuration directory with proper permissions
       mkdir -p /etc/ssh
       chmod 755 /etc/ssh
     '';
   };
 
-  # GPG configuration
+  # GPG and SSH agent configuration
   programs.gnupg = {
+    # Enable GPG agent for key management
     agent.enable = true;
+    # Use GPG agent for SSH authentication
     agent.enableSSHSupport = true;
   };
 }
+
