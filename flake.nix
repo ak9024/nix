@@ -29,7 +29,8 @@
       modules = [
         ./modules/core      # Core system configuration
         ./modules/secrets   # Secret management configuration
-        
+        ./modules/homebrew
+
         # Homebrew integration
         nix-homebrew.darwinModules.nix-homebrew
         {

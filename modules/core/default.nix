@@ -8,8 +8,6 @@
     ./zsh.nix
     # System-wide font configuration and management
     ./fonts.nix
-    # macOS Homebrew integration and package management
-    ../homebrew
   ];
 
   # Nix package manager configuration
