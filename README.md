@@ -31,6 +31,32 @@ age-keygen -o ~/.config/sops/age/keys.txt
 # The public key can be added to your flake for encrypted secrets
 ```
 
+```shell
+# https://www.lazyvim.org/installation
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+```
+
+```shell
+touch .gitconfig
+
+[user]
+signingkey = <signingkey>
+email = adiatma.mail@gmail.com
+name = adiatma kamarudin
+[commit]
+gpgsign = true
+[core]
+pager = delta
+[interactive]
+difffilter = delta --color-only
+[delta]
+navigate = true
+[merge]
+conflictstyle = zdiff3
+[gpg]
+program = /opt/homebrew/bin/gpg
+```
+
 ### 3. Update Configuration
 
 To update your system after making changes to the configuration:
