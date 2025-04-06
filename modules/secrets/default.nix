@@ -22,11 +22,5 @@
       owner = "ak9024";
     };
   };
-  
-  # Expose secrets as environment variables
-  environment.variables = {
-    # Reference the mounted secret file path
-    ANTHROPIC_API_KEY = config.sops.secrets.anthropic-api-key.path;
-  };
 }
 
