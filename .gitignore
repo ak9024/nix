@@ -1,1 +1,57 @@
-.ANTROPIC_API_KEY
+# Nix build outputs
+result
+result-*
+
+# Nix store paths
+/nix/store
+
+# direnv
+.direnv/
+.envrc
+
+# Nix flakes
+.std/
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+
+# Logs
+*.log
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Python cache files (if using Python in your Nix project)
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Node modules (if using Node.js in your Nix project)
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Build directories
+dist/
+build/
+
