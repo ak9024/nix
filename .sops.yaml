@@ -1,7 +1,30 @@
+# SOPS (Secrets OPerationS) Configuration File
+# https://github.com/mozilla/sops
+#
+# This file configures how SOPS encrypts and decrypts secrets in this repository.
+# SOPS is a tool that encrypts files while leaving the structure intact, making it
+# ideal for storing secrets in version control.
+
+# Define encryption keys that will be used
 keys:
+  # Age key for user ak9024
+  # The value is the public key used for encryption
   - &ak9024 age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl
+
+# Rules that determine which files get encrypted and with which keys
 creation_rules:
+  # Encrypt all files in the secrets/ directory with yaml, json, env, or ini extensions
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-    - age:
-      - *ak9024
+      - age:
+          - *ak9024
+# How to create an age key:
+# 1. Install age: `brew install age` or `nix-env -iA nixpkgs.age`
+# 2. Generate a key pair: `age-keygen -o ~/.config/sops/age/keys.txt`
+# 3. The output will show your public key (starts with "age1...") and save the private key to the file
+# 4. Add your public key to this file under the 'keys' section
+# 5. Set the SOPS_AGE_KEY_FILE environment variable to point to your private key:
+#    `export SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt`
+# 6. You can now encrypt files with: `sops -e -i secrets/your-file.yaml`
+#    and decrypt with: `sops -d secrets/your-file.yaml`
+
