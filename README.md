@@ -22,6 +22,15 @@ cd nix
 nix run nix-darwin -- switch --flake ~/nix#m2
 ```
 
+```shell
+# https://github.com/Mic92/sops-nix?tab=readme-ov-file#usage-example
+# Set up sops-nix with age encryption
+mkdir -p ~/.config/sops/age
+age-keygen -o ~/.config/sops/age/keys.txt
+# Make sure to back up this key file securely
+# The public key can be added to your flake for encrypted secrets
+```
+
 ### 3. Update Configuration
 
 To update your system after making changes to the configuration:
