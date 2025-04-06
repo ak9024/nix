@@ -18,7 +18,7 @@
         source $ZSH/oh-my-zsh.sh       # Load Oh My Zsh with the configured settings
       fi
 
-      ANTHROPIC_API_KEY=$(cat ${config.sops.secrets.anthropic-api-key.path});
+      export ANTHROPIC_API_KEY=$(cat ${config.sops.secrets.anthropic-api-key.path});
 
       # Useful Aliases
       alias vi="nvim";                 # Use neovim as the default vi editor
