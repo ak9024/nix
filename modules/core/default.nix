@@ -56,5 +56,9 @@
     # Use GPG agent for SSH authentication
     agent.enableSSHSupport = true;
   };
+
+  programs.tmux = {
+    enable = true;  # Enable the tmux terminal multiplexer
+  };
 }
 
