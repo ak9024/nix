@@ -43,11 +43,6 @@ EDITOR="nvim" sops updatekeys ./modules/secrets/secrets.yaml
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 ```
 
-```shell
-# next need to add home-manager to set this config in nix
-touch ~/.gitconfig
-```
-
 # Generate a new GPG key
 
 ```shell
