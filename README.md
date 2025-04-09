@@ -33,7 +33,8 @@ age-keygen -o ~/.config/sops/age/keys.txt
 nix-shell -p ssh-to-age --run "sudo ssh-to-age -private-key -i /var/root/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
 nix-shell -p ssh-to-age --run 'sudo cat /var/root/.ssh/id_ed25519.pub | ssh-to-age'
 # edit ./modules/secrets/.sops.yaml (update new age)
-EDITOR="nvim" sops updatekeys ./modules/secrets/secrets.yaml
+cd ./modules/secrets/
+EDITOR="nvim" sops secrets.yaml
 ```
 
 
