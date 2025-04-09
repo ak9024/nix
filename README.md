@@ -48,6 +48,29 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 touch ~/.gitconfig
 ```
 
+# Generate a new GPG key
+
+```shell
+# Generate a new GPG key
+gpg --full-generate-key
+# Choose RSA and RSA (default)
+# Set keysize to 4096 bits
+# Set expiration as needed
+# Enter your user information
+
+# List your GPG keys to get the key ID
+gpg --list-secret-keys --keyid-format=long
+# Look for the line like: sec   rsa4096/ABC123DEF456GHI7 (your key ID is after the slash)
+
+# Export your public key to add to GitHub/GitLab
+gpg --armor --export ABC123DEF456GHI7
+
+# Configure Git to use your key (replace with your actual key ID)
+git config --global user.signingkey ABC123DEF456GHI7
+git config --global commit.gpgsign true
+git config --global gpg.program /opt/homebrew/bin/gpg
+```
+
 ```shell
 # User identity configuration
 [user]
