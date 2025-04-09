@@ -29,8 +29,8 @@ nix run --experimental-features "nix-command flakes" nix-darwin -- switch --flak
 # https://github.com/Mic92/sops-nix?tab=readme-ov-file#usage-example
 # Set up sops-nix with age encryption
 mkdir -p ~/.config/sops/age
-sudo chown ak9024:staff ~/.config/sops/age/keys.txt
 age-keygen -o ~/.config/sops/age/keys.txt
+sudo chown ak9024:staff ~/.config/sops/age/keys.txt
 nix-shell -p ssh-to-age --run 'sudo cat /var/root/.ssh/id_ed25519.pub | ssh-to-age'
 # edit ./modules/secrets/.sops.yaml (update new age)
 cd ./modules/secrets/
