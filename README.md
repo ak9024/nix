@@ -24,20 +24,15 @@ cd nix
 nix run nix-darwin -- switch --flake ~/nix#m2
 ```
 
-```shell
-# generate new ssh-keys
-https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-```
-
 
 ```shell
 # https://github.com/Mic92/sops-nix?tab=readme-ov-file#usage-example
 # Set up sops-nix with age encryption
 mkdir -p ~/.config/sops/age
 age-keygen -o ~/.config/sops/age/keys.txt
-nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
+nix-shell -p ssh-to-age --run "sudo ssh-to-age -private-key -i /var/root/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
+nix-shell -p ssh-to-age --run 'sudo cat /var/root/.ssh/id_ed25519.pub | ssh-to-age'
 # edit ./modules/secrets/.sops.yaml (update new age)
-nix-shell -p ssh-to-age --run 'cat ~/.ssh/id_ed25519.pub | ssh-to-age'
 EDITOR="nvim" sops updatekeys ./modules/secrets/secrets.yaml
 ```
 

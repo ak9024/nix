@@ -52,6 +52,7 @@
     }
     
     # Print SSH key location
+    # SSH keys are saved at /var/root/.ssh/id_ed25519
     echo "SSH keys are saved at: $HOME/.ssh/id_ed25519 (private key) and $HOME/.ssh/id_ed25519.pub (public key)"
   '';
 
