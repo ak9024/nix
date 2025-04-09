@@ -2,13 +2,11 @@
 
 {
   imports = [
-    # Core system packages and applications
     ./packages.nix
-    # ZSH shell configuration and customization
     ./zsh.nix
-    # System-wide font configuration and management
     ./fonts.nix
   ];
+
 
   # Nix package manager configuration
   nix = {
