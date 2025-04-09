@@ -27,18 +27,33 @@
     enable = true;  # Enable the tmux terminal multiplexer
   };
 
-  # SSH configuration for automatic key management
+
   services.openssh = {
     enable = true;
   };
 
-  # System activation script to run commands during system activation
+  # Automatically generate SSH key on system activation
   system.activationScripts.postActivation.text = ''
-    # Clone LazyVim starter if it doesn't exist
-    if [ ! -d "$HOME/.config/nvim" ]; then
-      echo "Setting up LazyVim..."
-      ${pkgs.git}/bin/git clone https://github.com/LazyVim/starter "$HOME"/.config/nvim
+    # Generate SSH key if it doesn't exist
+    if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
+      mkdir -p "$HOME/.ssh"
+      ssh-keygen -t ed25519 -C "adiatma.mail@gmail.com" -f "$HOME/.ssh/id_ed25519" -N ""
+      echo "SSH key generated for adiatma.mail@gmail.com"
     fi
+
+    # Ensure proper permissions
+    chmod 700 "$HOME/.ssh"
+    chmod 600 "$HOME/.ssh/id_ed25519"
+    chmod 644 "$HOME/.ssh/id_ed25519.pub"
+    
+    # Add SSH key to SSH agent
+    ssh-add "$HOME/.ssh/id_ed25519" 2>/dev/null || {
+      eval "$(ssh-agent -s)" && ssh-add "$HOME/.ssh/id_ed25519"
+    }
+    
+    # Print SSH key location
+    echo "SSH keys are saved at: $HOME/.ssh/id_ed25519 (private key) and $HOME/.ssh/id_ed25519.pub (public key)"
   '';
+
 }
 
