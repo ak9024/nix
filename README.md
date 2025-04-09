@@ -24,7 +24,6 @@ cd nix
 nix run --experimental-features "nix-command flakes" nix-darwin -- switch --flake ~/nix#m2
 ```
 
-
 ```shell
 # https://github.com/Mic92/sops-nix?tab=readme-ov-file#usage-example
 # Set up sops-nix with age encryption
@@ -37,7 +36,6 @@ cd ./modules/secrets/
 sops updatekeys secrets.yaml
 EDITOR="nvim" sops secrets.yaml
 ```
-
 
 ```shell
 # for still using lazyvim, but next need to porting this config to nix.
