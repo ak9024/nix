@@ -12,7 +12,7 @@
     
     # SSH key to use for AGE decryption (GitHub SSH key)
     # This allows sops to use your existing SSH key for decryption
-    age.sshKeyPaths = [ "/Users/ak9024/.ssh/id_github" ];
+    age.sshKeyPaths = [];
     
     # Disable GPG SSH key paths as we're using AGE exclusively
     gnupg.sshKeyPaths = [];

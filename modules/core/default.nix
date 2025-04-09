@@ -26,5 +26,19 @@
   programs.tmux = {
     enable = true;  # Enable the tmux terminal multiplexer
   };
+
+  # SSH configuration for automatic key management
+  services.openssh = {
+    enable = true;
+  };
+
+  # System activation script to run commands during system activation
+  system.activationScripts.postActivation.text = ''
+    # Clone LazyVim starter if it doesn't exist
+    if [ ! -d "$HOME/.config/nvim" ]; then
+      echo "Setting up LazyVim..."
+      ${pkgs.git}/bin/git clone https://github.com/LazyVim/starter "$HOME"/.config/nvim
+    fi
+  '';
 }
 
