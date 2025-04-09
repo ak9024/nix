@@ -9,9 +9,13 @@
     # Location of the encrypted secrets file
     defaultSopsFile = ./secrets.yaml;
     
+    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
     # AGE key configuration
     age.keyFile = "/Users/ak9024/.config/sops/age/keys.txt";
     
+    age.generateKey = true;
+
     # Secret definitions
     secrets.anthropic-api-key = {
       # Mount path for the decrypted secret
