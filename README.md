@@ -21,7 +21,7 @@ Clone this repository and apply the configuration:
 ```shell
 git clone https://github.com/ak9024/nix.git
 cd nix
-nix run nix-darwin -- switch --flake ~/nix#m2
+nix run --exprimental-features "nix-command flakes" nix-darwin -- switch --flake ~/nix#m2
 ```
 
 
