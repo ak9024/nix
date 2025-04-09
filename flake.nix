@@ -26,22 +26,25 @@
     # Darwin configuration for M2 MacBook
     # Build with: darwin-rebuild switch --flake .#m2
     darwinConfigurations."m2" = nix-darwin.lib.darwinSystem {
+      # System modules configuration
       modules = [
-        ./modules/core      # Core system configuration
-        ./modules/secrets   # Secret management configuration
-        ./modules/homebrew
+        ./modules/core      # Core system configuration (packages, settings)
+        ./modules/secrets   # Secret management configuration (credentials, keys)
+        ./modules/homebrew  # Homebrew packages and configuration
 
-        # Homebrew integration
+        # Homebrew integration via nix-homebrew module
         nix-homebrew.darwinModules.nix-homebrew
         {
+          # Homebrew configuration settings
           nix-homebrew = {
-            enable = true;       # Enable Homebrew management
-            user = "ak9024";     # User account for Homebrew
-            autoMigrate = true;  # Auto-migrate Homebrew on changes
+            enable = true;       # Enable Homebrew management through Nix
+            user = "ak9024";     # User account for Homebrew installation
+            autoMigrate = true;  # Automatically migrate Homebrew on configuration changes
           };
         }
       ];
-      specialArgs = { inherit inputs; }; # Pass inputs to modules
+      # Pass flake inputs to all modules for access to sources and dependencies
+      specialArgs = { inherit inputs; };
     };
   };
 }

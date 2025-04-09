@@ -12,6 +12,8 @@ First, install the Nix package manager:
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
+> after install need to reboot your system, then run again
+
 ### 2. Clone and Apply Configuration
 
 Clone this repository and apply the configuration:
@@ -23,13 +25,22 @@ nix run nix-darwin -- switch --flake ~/nix#m2
 ```
 
 ```shell
+# generate new ssh-keys
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+```
+
+
+```shell
 # https://github.com/Mic92/sops-nix?tab=readme-ov-file#usage-example
 # Set up sops-nix with age encryption
 mkdir -p ~/.config/sops/age
 age-keygen -o ~/.config/sops/age/keys.txt
-# Make sure to back up this key file securely
-# The public key can be added to your flake for encrypted secrets
+nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
+# edit ./modules/secrets/.sops.yaml (update new age)
+nix-shell -p ssh-to-age --run 'cat ~/.ssh/id_ed25519.pub | ssh-to-age'
+EDITOR="nvim" sops updatekeys ./modules/secrets/secrets.yaml
 ```
+
 
 ```shell
 # for still using lazyvim, but next need to porting this config to nix.
