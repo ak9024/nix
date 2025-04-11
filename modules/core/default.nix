@@ -25,8 +25,15 @@
   
   programs.tmux = {
     enable = true;  # Enable the tmux terminal multiplexer
+    extraConfig = ''
+      # Enable mouse support for resizing panes, scrolling, and selecting windows
+      # This allows using the mouse to:
+      # - Select and resize panes
+      # - Scroll through terminal output
+      # - Select and switch between windows
+      set -g mouse on
+    '';
   };
-
 
   services.openssh = {
     enable = true;
