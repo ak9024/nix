@@ -6,6 +6,7 @@
     # Text editors and shell enhancements
     neovim
     oh-my-zsh
+    pure-prompt
     
     # ZSH plugins and extensions
     zsh-autosuggestions
@@ -33,6 +34,7 @@
     go-migrate  # Database migration tool
     cmake
     pkg-config
+    bun
     
     # CLI utilities
     wget

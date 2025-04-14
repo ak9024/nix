@@ -14,7 +14,6 @@
       # Command-line packages (formulae) to install via Homebrew
       brews = [
         # Shell utilities and enhancements
-        "pure"                       # Minimalist and fast ZSH prompt
         "eza"                        # Modern, colorized replacement for 'ls' command
         "ripgrep"                    # Fast, regex-powered search tool (alternative to grep)
         "fzf"                        # Command-line fuzzy finder for files, history, and more
