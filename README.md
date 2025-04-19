@@ -27,10 +27,10 @@ nix run --experimental-features "nix-command flakes" nix-darwin -- switch --flak
 ```shell
 # https://github.com/Mic92/sops-nix?tab=readme-ov-file#usage-example
 # Set up sops-nix with age encryption
-mkdir -p ~/.config/sops/age
 age-keygen -o ~/.config/sops/age/keys.txt
 sudo chown ak9024:staff ~/.config/sops/age/keys.txt
-nix-shell -p ssh-to-age --run 'sudo cat /var/root/.ssh/id_ed25519.pub | ssh-to-age'
+age-keygen -y ~/.config/sops/age/keys.txt
+# nix-shell -p ssh-to-age --run 'sudo cat /var/root/.ssh/id_ed25519.pub | ssh-to-age'
 # edit ./modules/secrets/.sops.yaml (update new age)
 cd ./modules/secrets/
 sops updatekeys secrets.yaml
@@ -58,7 +58,10 @@ gpg --list-secret-keys --keyid-format=long
 # Look for the line like: sec   rsa4096/ABC123DEF456GHI7 (your key ID is after the slash)
 
 # Export your public key to add to GitHub/GitLab
-gpg --armor --export ABC123DEF456GHI7
+gpg --armor --export ABC123DEF456GHI7 | pbcopy
+
+# add ssh keys to github
+sudo cat /var/root/.ssh/id_ed25519.pub | pbcopy
 
 # Configure Git to use your key (replace with your actual key ID)
 git config --global user.signingkey ABC123DEF456GHI7
