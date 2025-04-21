@@ -44,7 +44,8 @@
     tldr        # Simplified man pages
     tree        # Directory structure viewer
     neofetch    # System information tool
-    
+    protobuf_27
+
     # Security and encryption tools
     openssl     # Cryptographic library and tools
     sops        # Secrets management
