@@ -39,6 +39,8 @@
 
       # Activate Pure prompt
       prompt pure
+
+      export GPG_TTY=$(tty)
     '';
   };
 }
