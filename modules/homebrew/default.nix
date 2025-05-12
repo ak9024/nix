@@ -28,6 +28,15 @@
         # Development and Kubernetes tools
         "kubectx"                    # Tool for switching between Kubernetes contexts and namespaces
         "pnpm"                       # Fast, disk space efficient package manager for Node.js
+      
+        "rustywatch"
+      ];
+
+      # Third-party repositories (taps) to add to Homebrew
+      taps = [
+        # Add Homebrew taps here as needed
+        # Example: "homebrew/cask-fonts"
+        "ak9024/rustywatch"
       ];
 
       # GUI applications (casks) to install via Homebrew
