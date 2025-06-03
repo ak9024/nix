@@ -1,6 +1,18 @@
-{ pkgs, ... }: 
+{ pkgs, lib, ... }: 
 
 {
+  # Make sure Node.js modules are accessible globally
+  environment.variables = {
+    # Ensure global npm packages are accessible
+    NODE_PATH = "${pkgs.nodejs_23}/lib/node_modules";
+  };
+
+  # Prepend node executables to PATH
+  environment.extraInit = ''
+    # Ensure npm global bin directory is in PATH
+    export PATH=$HOME/.npm/bin:$PATH
+  '';
+
   # System packages configuration
   environment.systemPackages = with pkgs; [
     # Text editors and shell enhancements
