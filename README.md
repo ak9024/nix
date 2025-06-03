@@ -101,7 +101,13 @@ conflictstyle = zdiff3  # Use zdiff3 style for merge conflicts
 program = /opt/homebrew/bin/gpg  # Path to GPG executable
 ```
 
-### 3. Update Configuration
+### 3. Node.js
+
+```shell   
+npm install -g <packages> --prefix=$HOME/.npm
+```
+
+### 4. Update Configuration
 
 To update your system after making changes to the configuration:
 
